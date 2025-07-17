@@ -1,106 +1,74 @@
 # 🏛️ DepartmentConnect
 
-**DepartmentConnect** is a full-stack, role-based academic portal for college departments — built to handle academic workflows, student lifecycle, performance tracking, and collaborative communication — all in one beautifully designed platform. It supports **Admin**, **HOD**, **Professors**, **Students**, and **Alumni**, and is available on **web** and as a **mobile app**.
+**DepartmentConnect** is a full-stack, role-based academic portal for college departments — built to streamline academic workflows, student lifecycle management, performance analytics, and real-time collaboration. Supports roles: **Admin**, **HOD**, **Professors**, **Students**, and **Alumni** with seamless experience on both **web** and **mobile (PWA)**.
 
 ---
 
 ## 🚀 Project Overview
 
-A responsive and modern academic portal that helps institutions:
-- Manage students across 4 academic years and multiple sections
-- Assign professors and subjects dynamically per semester
-- Track attendance and evaluate internal performance continuously
-- Upload student data and marks via Excel
-- Empower students and alumni with dashboards and analytics
-- Enable real-time communication across all roles
-
-Built using **React.js**, **React Native**, **Tailwind CSS**, and **MSSQL**, with a shared backend for web and mobile experiences.
+A responsive academic platform designed using **Next.js 14 App Router**, featuring:
+- Centralized class/subject/student control
+- Attendance + internal marks management
+- Excel-based onboarding and year promotions
+- Role-specific dashboards and analytics
+- Real-time chat for section/global discussions
+- Alumni visibility and community extension
+- PWA-ready and mobile-first design
 
 ---
 
 ## 👥 User Roles
 
-| Role       | Capabilities                                                                 |
-|------------|-------------------------------------------------------------------------------|
-| **Admin**  | Full control. Manage years, classes, students, professors, subjects, and promotions |
-| **HOD**    | Same as Admin but scoped to department and semester                           |
-| **Professor** | Attendance, internal marks entry, analytics, and student performance views  |
-| **Student**   | Attendance dashboard, internal marks, subject-wise faculty view             |
-| **Alumni**    | View past records, achievements, participate in discussion groups           |
+| Role       | Permissions                                                                 |
+|------------|------------------------------------------------------------------------------|
+| **Admin**  | Global control: users, years, subjects, professors, classes, promotions      |
+| **HOD**    | Inherits Admin rights within a semester or branch                            |
+| **Professor** | View and manage attendance, internal assessments for assigned classes      |
+| **Student**   | Track academic performance, view assigned subjects and announcements       |
+| **Alumni**    | Access past data and join community discussions                            |
 
 ---
 
 ## 🎯 Key Features
 
-### 🛡️ Authentication & Access Control
-- Secure JWT-based login
-- Role-specific dashboard redirection
-- Protected routes using frontend guards
+### 🛡️ Authentication & Access
+- JWT-based secure login system
+- Role-aware routing with dynamic redirects
+- Session-based access using `next-auth` or `iron-session`
 
-### 🏛️ Department Management
-- Create/manage academic Years, Semesters, Sections
-- Assign Subjects per semester
-- Assign Professors to specific class-subject combinations
-- Designate HODs from existing faculty
-- Excel-based bulk student uploads
-- Year-end student promotion & graduation logic
+### 🏛️ Department & Class Management
+- Year/Sem/Section creation
+- Subject and professor assignment
+- HOD assignment from professor pool
+- Excel sheet upload for bulk student addition
+- Section-wise promotion logic (auto-graduation)
 
-### 📆 Attendance Management
-- Professors can mark attendance only for assigned subjects
-- Date + Subject based filter for attendance entry
-- Real-time dashboard for attendance percentage (circular meters)
-- Alerts for students < 75% attendance
+### 📆 Attendance & Evaluation
+- Daily subject-wise attendance by assigned professors
+- Attendance dashboard with circular charts and warnings
+- Mid 1/2/3 and Assignment 1/2/3 internal mark uploads
+- Student dashboard with bar/pie chart analytics
 
-### 📝 Internal Evaluations
-- Upload marks for:
-  - Mid-1, Mid-2, Mid-3
-  - Assignment-1, 2, 3
-- Students see full evaluation breakdown in charts
-- Professors view class-level performance analytics
+### 🧠 Dashboards per Role
+- Role-based routing using Next.js dynamic segments
+- Admin: section control, uploads, announcements
+- Professor: performance overview, subject filters
+- Student: attendance %, subject-wise performance
+- Alumni: records + achievement upload
 
-### 🧠 Student Dashboard
-- Auto-detected semester and subject list
-- Assigned faculty info
-- Attendance pie chart + test/assignment bar charts
-- Notice board with important alerts
+### 💬 Chat System (Section-wise + Global)
+- WebSocket or Firebase-powered real-time chat
+- WhatsApp-style layout
+- Group/channel list, scrollable messages, emoji picker
+- Role-badged and timestamped bubbles
 
-### 🎓 Alumni Access
-- Persistent academic record visibility
-- Access to general and alumni-only group chats
-- Achievement upload feature (optional)
+### 📱 Mobile Optimization + PWA
+- Tailwind’s mobile-first design
+- Collapsible sidebars & chat drawers
+- PWA support via `next-pwa` for installable app
+- Offline-ready service workers
 
-### 📊 Visual Analytics
-- Circular progress meters (attendance)
-- Pie charts (attendance per subject)
-- Stacked bar graphs (test scores across attempts)
-- Role-specific dashboards with analytics widgets
-
-### 💬 Real-Time Chat System
-- Socket.io or Firebase-based group chat
-- Section-based, role-based, and global group discussions
-- WhatsApp-style interface:
-  - Collapsible panel
-  - Emoji picker
-  - Role badge (Admin, Prof, Student, Alumni)
-  - Timestamped messages
-
-### 📱 Web + Mobile App
-- Fully mobile-responsive layout with Tailwind CSS
-- PWA installable via browser
-- Optional React Native app with shared backend
-- Touch-friendly UI, offline-ready with service workers
-
-### ⚙️ Extra Features
-- Toast alerts for actions (success/error)
-- Collapsible sidebar and chat panels
-- Loading states and skeleton UIs
-- Optional Dark Mode support
-- Deep linking & push notifications for mobile (future-ready)
-
----
-
-## 🎨 UI Theme
-
+### 🎨 UI Color Palette
 | Element    | Color     | Code        |
 |------------|-----------|-------------|
 | Primary    | Deep Red  | `#8B0000`   |
@@ -112,16 +80,16 @@ Built using **React.js**, **React Native**, **Tailwind CSS**, and **MSSQL**, wit
 
 ## 🛠️ Tech Stack
 
-| Layer       | Technology                           |
-|-------------|--------------------------------------|
-| Frontend    | React.js + Tailwind CSS              |
-| App         | React Native or Progressive Web App  |
-| Backend     | Node.js + Express.js or FastAPI      |
-| Database    | Microsoft SQL Server (MSSQL)         |
-| Charts      | Recharts / Chart.js                  |
-| Chat        | Socket.io or Firebase                |
-| Auth        | JWT with Role-based Routing          |
-| Deployments | Netlify, Railway, Azure App Service  |
+| Layer         | Technology                             |
+|---------------|----------------------------------------|
+| Frontend      | **Next.js 14 (App Router)** + Tailwind CSS |
+| App           | PWA + Mobile-First UI                  |
+| Backend       | Node.js + Express.js or FastAPI        |
+| Database      | Microsoft SQL Server (MSSQL)           |
+| Charts        | Recharts / Chart.js                    |
+| Realtime Chat | Socket.io / Firebase                   |
+| Auth          | NextAuth.js / Iron Session (JWT)       |
+| Deployment    | Vercel (Frontend) + Railway/Azure (Backend & DB) |
 
 ---
 
@@ -129,7 +97,7 @@ Built using **React.js**, **React Native**, **Tailwind CSS**, and **MSSQL**, wit
 
 ```sql
 -- Core Tables
-Users (user_id, name, email, password, role)
+Users (user_id, name, email, password_hash, role)
 Students (student_id, user_id, year, section)
 Professors (prof_id, user_id)
 Subjects (subject_id, name, semester)
