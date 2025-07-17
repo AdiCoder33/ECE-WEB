@@ -1,82 +1,112 @@
 # 🏛️ DepartmentConnect
 
-A full-stack, role-based academic portal built for college departments. It supports Admin, HOD, Professors, Students, and Alumni, delivering seamless academic operations, performance insights, and community interaction.
+**DepartmentConnect** is a full-stack, role-based academic portal for college departments — built to handle academic workflows, student lifecycle, performance tracking, and collaborative communication — all in one beautifully designed platform. It supports **Admin**, **HOD**, **Professors**, **Students**, and **Alumni**, and is available on **web** and as a **mobile app**.
 
 ---
 
 ## 🚀 Project Overview
 
-**DepartmentConnect** is a responsive web + mobile-ready application designed to manage and streamline:
+A responsive and modern academic portal that helps institutions:
+- Manage students across 4 academic years and multiple sections
+- Assign professors and subjects dynamically per semester
+- Track attendance and evaluate internal performance continuously
+- Upload student data and marks via Excel
+- Empower students and alumni with dashboards and analytics
+- Enable real-time communication across all roles
 
-- Class and subject assignment
-- Attendance tracking and internal evaluations
-- Student onboarding and promotion
-- Real-time announcements and group discussions
-- Alumni data viewing and interaction
-
-The platform follows a clean UI layout with collapsible sidebars, WhatsApp-style chat, and modular role-based dashboards.
+Built using **React.js**, **React Native**, **Tailwind CSS**, and **MSSQL**, with a shared backend for web and mobile experiences.
 
 ---
 
 ## 👥 User Roles
 
-| Role       | Description                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| **Admin**  | Clerk-level account with full control. Assigns professors, manages classes |
-| **HOD**    | Inherits Admin permissions for a semester. Assigned to existing professors |
-| **Professor** | Handles attendance, internal marks, and class performance                 |
-| **Student**   | Views attendance, marks, faculty info, and participates in discussions   |
-| **Alumni**    | Views academic records and joins alumni conversations                     |
+| Role       | Capabilities                                                                 |
+|------------|-------------------------------------------------------------------------------|
+| **Admin**  | Full control. Manage years, classes, students, professors, subjects, and promotions |
+| **HOD**    | Same as Admin but scoped to department and semester                           |
+| **Professor** | Attendance, internal marks entry, analytics, and student performance views  |
+| **Student**   | Attendance dashboard, internal marks, subject-wise faculty view             |
+| **Alumni**    | View past records, achievements, participate in discussion groups           |
 
 ---
 
-## 🎯 Features Summary
+## 🎯 Key Features
 
-### ✅ Common
-- Fully **mobile-responsive** layout (Tailwind CSS)
-- Smooth navigation with collapsible **Sidebar** and **Chat Panel**
-- Role-based login and protected dashboard routes
-- Unified backend for web and app
+### 🛡️ Authentication & Access Control
+- Secure JWT-based login
+- Role-specific dashboard redirection
+- Protected routes using frontend guards
 
-### 🏛️ Public Website
-- Announcements carousel
-- Faculty horizontal scroll
-- Events gallery
+### 🏛️ Department Management
+- Create/manage academic Years, Semesters, Sections
+- Assign Subjects per semester
+- Assign Professors to specific class-subject combinations
+- Designate HODs from existing faculty
+- Excel-based bulk student uploads
+- Year-end student promotion & graduation logic
 
-### 👨‍💼 Admin/HOD
-- Create/manage Years, Semesters, Sections
-- Assign Subjects and Professors
-- Upload students via Excel
-- Promote students to next year
+### 📆 Attendance Management
+- Professors can mark attendance only for assigned subjects
+- Date + Subject based filter for attendance entry
+- Real-time dashboard for attendance percentage (circular meters)
+- Alerts for students < 75% attendance
 
-### 👨‍🏫 Professors
-- Take subject-wise attendance
-- Upload Internal Marks (Mid 1/2/3 + Assignment 1/2/3)
-- View class analytics (attendance % graphs)
+### 📝 Internal Evaluations
+- Upload marks for:
+  - Mid-1, Mid-2, Mid-3
+  - Assignment-1, 2, 3
+- Students see full evaluation breakdown in charts
+- Professors view class-level performance analytics
 
-### 👨‍🎓 Students
-- View assigned subjects and teachers
-- Attendance progress (circular chart)
-- Internal marks breakdown (bar/pie chart)
+### 🧠 Student Dashboard
+- Auto-detected semester and subject list
+- Assigned faculty info
+- Attendance pie chart + test/assignment bar charts
+- Notice board with important alerts
 
-### 🎓 Alumni
-- View academic records
-- Join global/section chats
-- Submit achievements/testimonials (optional)
+### 🎓 Alumni Access
+- Persistent academic record visibility
+- Access to general and alumni-only group chats
+- Achievement upload feature (optional)
 
-### 💬 Chat System
-- Role-tagged, timestamped group messaging
-- Section-level and global discussion groups
-- Collapsible chat panel for immersive UX
+### 📊 Visual Analytics
+- Circular progress meters (attendance)
+- Pie charts (attendance per subject)
+- Stacked bar graphs (test scores across attempts)
+- Role-specific dashboards with analytics widgets
+
+### 💬 Real-Time Chat System
+- Socket.io or Firebase-based group chat
+- Section-based, role-based, and global group discussions
+- WhatsApp-style interface:
+  - Collapsible panel
+  - Emoji picker
+  - Role badge (Admin, Prof, Student, Alumni)
+  - Timestamped messages
+
+### 📱 Web + Mobile App
+- Fully mobile-responsive layout with Tailwind CSS
+- PWA installable via browser
+- Optional React Native app with shared backend
+- Touch-friendly UI, offline-ready with service workers
+
+### ⚙️ Extra Features
+- Toast alerts for actions (success/error)
+- Collapsible sidebar and chat panels
+- Loading states and skeleton UIs
+- Optional Dark Mode support
+- Deep linking & push notifications for mobile (future-ready)
 
 ---
 
 ## 🎨 UI Theme
 
-- 🔴 Red: `#8B0000` – Primary Accent (Buttons, Highlights)
-- 🔵 Blue: `#001F54` – Header, Nav, Footer
-- 🟤 Brown: `#8B5E3C` – Sub-accents, cards
-- ⚪ Neutral: `#F5F5F5` – Background
+| Element    | Color     | Code        |
+|------------|-----------|-------------|
+| Primary    | Deep Red  | `#8B0000`   |
+| Secondary  | Navy Blue | `#001F54`   |
+| Accent     | Brown     | `#8B5E3C`   |
+| Background | Neutral   | `#F5F5F5`   |
 
 ---
 
@@ -85,48 +115,26 @@ The platform follows a clean UI layout with collapsible sidebars, WhatsApp-style
 | Layer       | Technology                           |
 |-------------|--------------------------------------|
 | Frontend    | React.js + Tailwind CSS              |
-| App         | React Native / PWA-ready             |
+| App         | React Native or Progressive Web App  |
 | Backend     | Node.js + Express.js or FastAPI      |
 | Database    | Microsoft SQL Server (MSSQL)         |
 | Charts      | Recharts / Chart.js                  |
 | Chat        | Socket.io or Firebase                |
 | Auth        | JWT with Role-based Routing          |
-| Deployments | Netlify, Railway, Azure SQL          |
+| Deployments | Netlify, Railway, Azure App Service  |
 
 ---
 
-## 📦 Phase-Wise Implementation
-
-### 🔹 Phase 1: Foundation
-- Homepage + Login UI
-- Role-based routing
-- Basic dashboard scaffolds
-- Sidebar & ChatPanel collapsible layouts
-
-### 🔹 Phase 2: Functional Dashboards
-- Attendance form + circular charts
-- Marks entry and student views
-- Excel upload for admin
-- Role-specific widgets and charts
-
-### 🔹 Phase 3: Chat & Mobile App
-- WhatsApp-style real-time chat
-- Role badges, emoji picker
-- Installable PWA/mobile-friendly layout
-- Year-end promotions and dark mode (optional)
-
----
-
-## 🧱 Database Structure (MSSQL)
+## 🧱 Database Schema (MSSQL)
 
 ```sql
--- Key Tables
+-- Core Tables
 Users (user_id, name, email, password, role)
 Students (student_id, user_id, year, section)
 Professors (prof_id, user_id)
-Subjects (subject_id, name, sem)
+Subjects (subject_id, name, semester)
 Classes (class_id, year, section)
-Assignments (prof_id, subject_id, class_id)
+Assignments (assignment_id, prof_id, subject_id, class_id)
 Attendance (student_id, subject_id, date, status)
 Marks (student_id, subject_id, mid1, mid2, mid3, assign1, assign2, assign3)
 Announcements (id, title, content, role, created_at)
